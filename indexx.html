@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stopwatch</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+
+  <div class="stopwatch">
+    <div class="time" id="display">00:00:00</div>
+    <button class="start" onclick="start()">Start</button>
+    <button class="stop" onclick="stop()">Stop</button>
+    <button class="reset" onclick="reset()">Reset</button>
+  </div>
+
+  <script>
+    let startTime, interval;
+    let running = false;
+
+    function updateTime() {
+      const elapsed = Date.now() - startTime;
+      const totalSeconds = Math.floor(elapsed / 1000);
+      const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const seconds = String(totalSeconds % 60).padStart(2, '0');
+      document.getElementById('display').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    function start() {
+      if (!running) {
+        startTime = Date.now() - (interval ? (Date.now() - startTime) : 0);
+        interval = setInterval(updateTime, 1000);
+        running = true;
+      }
+    }
+
+    function stop() {
+      clearInterval(interval);
+      running = false;
+    }
+
+    function reset() {
+      clearInterval(interval);
+      document.getElementById('display').textContent = "00:00:00";
+      running = false;
+    }
+  </script>
+
+</body>
+</html>

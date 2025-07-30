@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+  font-family: sans-serif;
+  padding-top: 50px;
+  background-color: #f2f2f2;
+}
+
+input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+#output {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+}
